@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+ import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-folder',
@@ -11,6 +12,7 @@ export class FolderPage implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute) { }
 
+  faCoffee = faCoffee ;
   ngOnInit() {
     this.folder = this.activatedRoute.snapshot.paramMap.get('id');
   }
