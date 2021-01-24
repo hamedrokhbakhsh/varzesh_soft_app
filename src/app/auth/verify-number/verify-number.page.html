@@ -1,0 +1,35 @@
+
+<ion-content>
+
+  <div class="container mt-5">
+    <div class="">
+      <h1 class=" text mt-0">احراز هویت</h1>
+      <h2 class=" text mt-4"> </h2>
+    </div>
+
+
+    <div class="row">
+      <div class="col mt-5">
+        <form [formGroup]="form" (ngSubmit)="confirm()">
+          <ion-item class="">
+            <ion-label position="fixed text">تایید شماره</ion-label>
+            <ion-input formControlName="mobile" type="number"></ion-input>
+          </ion-item>
+          <div class="validation-box d-flex justify-content-end">
+            <div *ngIf="form.get('mobile').valid">
+              &nbsp;
+            </div>
+            <div *ngIf="form.get('mobile').invalid && isSubmit">
+              <span class="text-bottom mr-2"></span>
+              <ion-icon name="information-circle" class="text-warning" size="small"></ion-icon>
+
+            </div>
+          </div>
+          <ion-button class="mt-4 text-bottom text-light"  type="submit" expand="full">تایید</ion-button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+  </div>
+</ion-content>
