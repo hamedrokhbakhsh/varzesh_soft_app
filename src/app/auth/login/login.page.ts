@@ -14,7 +14,8 @@ export class LoginPage implements OnInit {
     isSubmit = false;
   constructor(private fb: FormBuilder, private toast: ToastServiceService, private router: Router) {
     this.form = this.fb.group({
-      mobile: ['', [Validators.required, Validators.min(1) , Validators.max(11)]],
+        mobile: ['', [Validators.required]],
+
     });
   }
 
@@ -23,7 +24,11 @@ export class LoginPage implements OnInit {
 
  login() {
    this.isSubmit = true;
-  this.router.navigate(['/verify']);
+  //this.router.navigate(['/verify']);
  }
 
+  submit() {
+      this.router.navigate(['/signup']);
+
+  }
 }
