@@ -4,33 +4,23 @@
   <div class="container mt-5">
     <div class="">
       <h1 class=" text mt-0">خوش امدید</h1>
-      <h2 (click)="submit()" class=" text mt-4"> ثبت نام</h2>
+      <h2 (click)="signup()" class=" text mt-4"> ثبت نام</h2>
     </div>
 
 
     <div class="row">
       <div class="col mt-5">
-        <form [formGroup]="form" (ngSubmit)="login()">
-          <ion-item dir="rtl" class="">
+        <form [formGroup]="form" (ngSubmit)="submit()">
+          <ion-item dir="rtl"
+                    [class.valid]="form.get('mobile').valid && form.get('mobile').dirty"
+                    [class.invalid]="form.get('mobile').invalid && form.get('mobile').dirty">
             <ion-label position="fixed text">موبایل</ion-label>
             <ion-input formControlName="mobile" type="number"></ion-input>
           </ion-item>
-          <div class="validation-box d-flex justify-content-end">
-            <div>
-              &nbsp;
-            </div>
-
-            <div *ngIf="form.get('mobile').valid">
-              &nbsp;
-            </div>
-            <div *ngIf="form.get('mobile').invalid && isSubmit">
-              <span class="text">شماره خود را بدرستی وارد کنید</span>
-
-              <ion-icon name="information-circle" size="small"></ion-icon>
-
-            </div>
-          </div>
-          <ion-button class="mt-4 text-bottom text-light"  type="submit" expand="full">ورود</ion-button>
+          <ion-button class="mt-4 text-bottom text-light"  type="submit" expand="full">
+            <ion-spinner *ngIf="loading"></ion-spinner>
+            <span *ngIf="!loading">تایید شماره</span>
+          </ion-button>
         </form>
       </div>
     </div>

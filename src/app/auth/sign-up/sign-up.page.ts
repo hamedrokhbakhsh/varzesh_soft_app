@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
-import {min} from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-sign-up',
@@ -11,8 +11,8 @@ import {min} from 'rxjs/operators';
 export class SignUpPage implements OnInit {
 
   form: FormGroup;
-  isSubmit: boolean;
-
+  isSubmit = false;
+  loading = false ;
   constructor(private fb: FormBuilder, private router: Router) {
     this.form = this.fb.group({
       mobile: ['', [Validators.required, Validators.minLength(10)]],
@@ -27,6 +27,10 @@ export class SignUpPage implements OnInit {
   }
 
   confirm() {
-    console.log(this.form.value)
+    this.isSubmit = ! this.isSubmit ;
+  }
+
+  login() {
+    this.router.navigate(['/login']).then();
   }
 }
